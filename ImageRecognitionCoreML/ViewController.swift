@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pictureImageView :UIImageView!
     @IBOutlet weak var titleLabel :UILabel!
     
-    private var model :my_model = my_model()
+    private var model = my_model()
     
     let images = ["cat.jpg","dog.jpg","rat.jpg","banana.jpg"]
     var index = 0
