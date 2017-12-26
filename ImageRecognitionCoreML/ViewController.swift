@@ -14,8 +14,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleLabel :UILabel!
     
     private var model :my_model = my_model()
-    
-    let images = ["cat.jpg","dog.jpg","rat.jpg","banana.jpg"]
+
+    let pathForImages = Bundle.main.bundlePath
+    let extensionsForImages = ["jpeg", "jpg", "png"]
+
+    lazy var images: [String] = {
+        guard let content = try? FileManager.default.contentsOfDirectory(atPath: pathForImages) else { return [] }
+        return content.filter { extensionsForImages.contains( URL(fileURLWithPath: $0).pathExtension.lowercased() ) }
+    }()
+
     var index = 0
     
     override func viewDidLoad() {
